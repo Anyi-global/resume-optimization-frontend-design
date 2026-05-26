@@ -1,0 +1,231 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* =========================
+   ROOT – LIGHT MODE
+   ========================= */
+:root {
+  /* Brand Colors */
+  --brand-blue: #016295;
+  --brand-green: #13a061;
+  --brand-white: #ffffff;
+
+  /* Neutrals */
+  --neutral-dark: #0f172a;
+  --neutral-light: #f8fafc;
+  --neutral-gray: #64748b;
+
+  /* Background System */
+  --background: #ffffff; /* primary canvas */
+  --background-secondary: rgba(1, 98, 149, 0.03); /* very light blue tint */
+  --background-accent: rgba(19, 160, 97, 0.03); /* very light green tint */
+
+  --foreground: #0f172a;
+
+  /* Cards & Surfaces */
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+  --popover: #ffffff;
+  --popover-foreground: #0f172a;
+
+  /* Primary Actions */
+  --primary: var(--brand-blue);
+  --primary-foreground: #ffffff;
+
+  /* Secondary / Success */
+  --secondary: var(--brand-green);
+  --secondary-foreground: #ffffff;
+
+  /* Muted UI */
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+
+  /* Accent */
+  --accent: var(--brand-green);
+  --accent-foreground: #ffffff;
+
+  /* States */
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+
+  /* Borders & Inputs */
+  --border: #e2e8f0;
+  --input: #f1f5f9;
+  --ring: var(--brand-blue);
+
+  /* Charts */
+  --chart-1: #016295;
+  --chart-2: #13a061;
+  --chart-3: #0f766e;
+  --chart-4: #0d47a1;
+  --chart-5: #00897b;
+
+  /* Radius */
+  --radius: 0.5rem;
+
+  /* Sidebar */
+  --sidebar: #ffffff;
+  --sidebar-foreground: #0f172a;
+  --sidebar-primary: var(--brand-blue);
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #f8fafc;
+  --sidebar-accent-foreground: var(--brand-blue);
+  --sidebar-border: #e2e8f0;
+  --sidebar-ring: #cbd5e1;
+}
+
+/* =========================
+   DARK MODE (RESTRAINED)
+   ========================= */
+.dark {
+  --background: #0f172a;
+  --foreground: #f1f5f9;
+
+  --card: #1e293b;
+  --card-foreground: #f1f5f9;
+
+  --popover: #1e293b;
+  --popover-foreground: #f1f5f9;
+
+  --primary: #38bdf8; /* softened blue */
+  --primary-foreground: #0f172a;
+
+  --secondary: #34d399;
+  --secondary-foreground: #0f172a;
+
+  --muted: #334155;
+  --muted-foreground: #94a3b8;
+
+  --accent: #13a061;
+  --accent-foreground: #ffffff;
+
+  --destructive: #f87171;
+  --destructive-foreground: #0f172a;
+
+  --border: #334155;
+  --input: #1e293b;
+  --ring: #13a061;
+
+  --sidebar: #0f172a;
+  --sidebar-foreground: #f1f5f9;
+  --sidebar-primary: #38bdf8;
+  --sidebar-primary-foreground: #0f172a;
+  --sidebar-accent: #1e293b;
+  --sidebar-accent-foreground: #f1f5f9;
+  --sidebar-border: #334155;
+  --sidebar-ring: #64748b;
+}
+
+/* =========================
+   THEME TOKENS
+   ========================= */
+@theme inline {
+  --font-sans: "Geist", "Geist Fallback";
+  --font-mono: "Geist Mono", "Geist Mono Fallback";
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+/* =========================
+   BASE LAYER
+   ========================= */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* =========================
+   SOFT BRAND BACKGROUNDS
+   ========================= */
+
+/* Use for hero or highlighted sections */
+.hero-gradient {
+  background: linear-gradient(
+    180deg,
+    rgba(1, 98, 149, 0.18) 0%,
+    rgba(1, 98, 149, 0.14) 45%,
+    rgba(19, 160, 97, 0.12) 100%
+  );
+}
+
+.social-proof-gradient {
+  background: linear-gradient(
+    180deg,
+    rgba(1, 98, 149, 0.18) 0%,
+    rgba(1, 98, 149, 0.14) 25%,
+    rgba(19, 160, 97, 0.12)115%
+  );
+}
+
+.testimonials-gradient {
+  background: linear-gradient(
+    180deg,
+    rgba(1, 98, 149, 0.18) 0%,
+    rgba(1, 98, 149, 0.14) 30%,
+    rgba(19, 160, 97, 0.12) 105%
+  );
+}
+
+.faq-gradient {
+  background: linear-gradient(
+    180deg,
+    rgba(1, 98, 149, 0.18) 0%,
+    rgba(1, 98, 149, 0.14) 60%,
+    rgba(19, 160, 97, 0.12) 100%
+  );
+}
+
+.bg-brand-soft {
+  background: linear-gradient(
+    135deg,
+    rgba(1, 98, 149, 0.04),
+    rgba(19, 160, 97, 0.04)
+  );
+}
+
+/* Use for subtle alternating sections */
+.bg-brand-blue-soft {
+  background-color: rgba(1, 98, 149, 0.03);
+}
+
+.bg-brand-green-soft {
+  background-color: rgba(19, 160, 97, 0.03);
+}
